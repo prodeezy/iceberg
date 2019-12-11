@@ -17,14 +17,16 @@
  * under the License.
  */
 
-package org.apache.iceberg.parquet.vectorized;
+package org.apache.iceberg.spark.data.vectorized;
 
 import java.lang.reflect.Array;
 import java.util.List;
 import java.util.Map;
 import org.apache.arrow.vector.FieldVector;
-import org.apache.iceberg.parquet.arrow.IcebergArrowColumnVector;
-import org.apache.iceberg.parquet.arrow.NullValuesColumnVector;
+import org.apache.iceberg.arrow.vectorized.NullabilityHolder;
+import org.apache.iceberg.arrow.vectorized.VectorHolder;
+import org.apache.iceberg.arrow.vectorized.VectorizedArrowReader;
+import org.apache.iceberg.parquet.vectorized.VectorizedReader;
 import org.apache.iceberg.types.Types;
 import org.apache.parquet.column.page.DictionaryPageReadStore;
 import org.apache.parquet.column.page.PageReadStore;

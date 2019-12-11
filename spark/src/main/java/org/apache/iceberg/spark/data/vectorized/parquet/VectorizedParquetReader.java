@@ -17,7 +17,7 @@
  * under the License.
  */
 
-package org.apache.iceberg.parquet;
+package org.apache.iceberg.spark.data.vectorized.parquet;
 
 import java.io.Closeable;
 import java.io.IOException;
@@ -34,8 +34,14 @@ import org.apache.iceberg.expressions.Expressions;
 import org.apache.iceberg.io.CloseableGroup;
 import org.apache.iceberg.io.CloseableIterable;
 import org.apache.iceberg.io.InputFile;
-import org.apache.iceberg.parquet.vectorized.ColumnarBatchReaders;
+import org.apache.iceberg.parquet.ParquetDictionaryRowGroupFilter;
+import org.apache.iceberg.parquet.ParquetIO;
+import org.apache.iceberg.parquet.ParquetMetricsRowGroupFilter;
+import org.apache.iceberg.parquet.ParquetSchemaUtil;
+import org.apache.iceberg.parquet.ParquetUtil;
+import org.apache.iceberg.parquet.ParquetValueReader;
 import org.apache.iceberg.parquet.vectorized.VectorizedReader;
+import org.apache.iceberg.spark.data.vectorized.ColumnarBatchReaders;
 import org.apache.parquet.ParquetReadOptions;
 import org.apache.parquet.column.page.DictionaryPageReadStore;
 import org.apache.parquet.column.page.PageReadStore;

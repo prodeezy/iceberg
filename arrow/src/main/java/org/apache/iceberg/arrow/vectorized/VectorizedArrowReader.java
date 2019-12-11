@@ -17,7 +17,7 @@
  * under the License.
  */
 
-package org.apache.iceberg.parquet.vectorized;
+package org.apache.iceberg.arrow.vectorized;
 
 import java.util.Map;
 import org.apache.arrow.memory.BufferAllocator;
@@ -33,11 +33,10 @@ import org.apache.arrow.vector.TimeStampMicroTZVector;
 import org.apache.arrow.vector.types.pojo.ArrowType;
 import org.apache.arrow.vector.types.pojo.Field;
 import org.apache.arrow.vector.types.pojo.FieldType;
+import org.apache.iceberg.arrow.ArrowSchemaUtil;
+import org.apache.iceberg.arrow.vectorized.parquet.VectorizedColumnIterator;
 import org.apache.iceberg.parquet.ParquetUtil;
-import org.apache.iceberg.parquet.arrow.ArrowSchemaUtil;
-import org.apache.iceberg.parquet.arrow.IcebergDecimalArrowVector;
-import org.apache.iceberg.parquet.arrow.IcebergVarBinaryArrowVector;
-import org.apache.iceberg.parquet.arrow.IcebergVarcharArrowVector;
+import org.apache.iceberg.parquet.vectorized.VectorizedReader;
 import org.apache.iceberg.types.Types;
 import org.apache.parquet.column.ColumnDescriptor;
 import org.apache.parquet.column.Dictionary;
@@ -294,7 +293,8 @@ public class VectorizedArrowReader implements VectorizedReader {
         public void setRowGroupInfo(
             PageReadStore source,
             DictionaryPageReadStore dictionaryPageReadStore,
-            Map<ColumnPath, Boolean> columnDictEncoded) {}
+            Map<ColumnPath, Boolean> columnDictEncoded) {
+        }
       };
 }
 
